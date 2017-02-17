@@ -1,0 +1,16 @@
+{
+  "name": "tiling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "geobuf": "^3.0.0",
+    "geojson-vt": "^2.4.0",
+    "mkdirp": "^0.5.1"
+  }
+}
