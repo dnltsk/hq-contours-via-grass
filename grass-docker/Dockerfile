@@ -25,7 +25,7 @@ VOLUME ["/data"]
 ENV SHELL /bin/bash
 
 # All commands are executed by grass.
-ENTRYPOINT ["grass"]
+#ENTRYPOINT ["grass"]
 
 # Output GRASS version by default.
-CMD ["--help]
+#CMD ["--help]

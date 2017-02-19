@@ -76,11 +76,6 @@ $(GRASS): /tmp/grass $(BUILD_ESSENTIAL) $(GDAL_CONFIG) $(MAN)
 		--with-opengl-libs=/usr/include/GL \
 		--with-freetype=yes --with-freetype-includes="/usr/include/freetype2/" \
 		--with-postgres=yes --with-postgres-includes="/usr/include/postgresql" \
-		--with-sqlite=yes \
-		--with-mysql=yes --with-mysql-includes="/usr/include/mysql" \
-		--with-odbc=yes \
-		--with-netcdf=yes \
-		--with-liblas=yes \
 	&& make -j$$(nproc) \
 	&& make install \
 	&& export WITH_GRASS=/usr/local/grass-$$(head -3 /tmp/grass/include/VERSION | tr "\n" . | sed 's/\.$$//') \
