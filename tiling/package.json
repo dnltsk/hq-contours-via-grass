@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "geobuf": "^3.0.0",
     "geojson-vt": "^2.4.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "vt-pbf": "^2.1.2"
   }
 }
