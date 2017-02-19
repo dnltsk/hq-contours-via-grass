@@ -35,12 +35,12 @@ export GISRC=$HOME/.grassrc7
 g.version
 ogrinfo --version
 
-#1. import raster
-r.in.gdal input=sample-data/sample-pressure.tif output=raster
+gdal_contour -i 1000 -off 0 sample-data/sample-pressure.tif sample-data/contours.shp
 
-#2. extract contours
-r.contour --overwrite step=500 input=raster output=contours
-v.out.ogr --overwrite type=line input=contours output=sample-data/contours.shp
+sample-data/contours.shp
+
+#1. import raster
+v.in.ogr input=sample-data/contours.shp output=contours
 
 #3. smooth corners with Chaiken's algorithm to get smoother curves
 v.generalize --overwrite method=chaiken threshold=0.1 input=contours output=isolines_all
