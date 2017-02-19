@@ -24,3 +24,6 @@ http://gis.stackexchange.com/questions/87505/grass-v-generalize-method-douglas-n
 
 * GRASS and Shell<br/>
 https://grasswiki.osgeo.org/wiki/GRASS_and_Shell
+
+* GRASS Docker Images<br/>
+https://github.com/geo-data/grass-docker
