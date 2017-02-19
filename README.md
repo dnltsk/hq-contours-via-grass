@@ -2,7 +2,7 @@
 
 Sample environment and script to create high quality contours via GRASS and GDAL/OGR. Typical use cases are isobar maps for weather- and elevation maps
 
-It is inspired from an answer on StackOverflow.<br/> 
+It is inspired by an answer on StackOverflow.<br/> 
 http://gis.stackexchange.com/questions/87505/grass-v-generalize-method-douglas-not-working-as-expected
 
 ![sample result](sample-result.gif "sample result")
