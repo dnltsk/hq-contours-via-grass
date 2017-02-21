@@ -1,14 +1,29 @@
 # High Quality Contours via GRASS
 
-sample to create high quality contours via GRASS which is important for weather data
+Sample environment and script to create high quality contours via GRASS and GDAL/OGR. Typical use cases are isobar maps for weather- and elevation maps
 
-Inspired from a answer on StackOverflow http://gis.stackexchange.com/questions/87505/grass-v-generalize-method-douglas-not-working-as-expected
+![sample result](sample-result.gif "sample result")
 
-![contours](V24Lr.gif "Contours")
+It is inspired by an answer on StackOverflow.<br/> 
+http://gis.stackexchange.com/questions/87505/grass-v-generalize-method-douglas-not-working-as-expected
 
+## environment
 
-just a note:
-```
-gdal_contour Pressure_80_2017-02-16T13:00:00Z.tif -off 0 -i 500 press_500.shp
-ogr2ogr -f GeoJSON -lco coordinate_precision=2 press_500_s.json press_500.shp
-```
+* GRASS 7.3.svn (2017)
+* GDAL 2.2.0dev, released 2016/99/99
+
+## build docker image
+
+* `docker build -t grass .`
+
+## run sample script
+
+* `docker run -it --rm -v $(pwd):$(pwd) -w $(pwd) grass ./sample-script.sh`
+
+## references
+
+* GRASS and Shell<br/>
+https://grasswiki.osgeo.org/wiki/GRASS_and_Shell
+
+* GRASS Docker Images<br/>
+https://github.com/geo-data/grass-docker
