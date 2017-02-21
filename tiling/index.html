@@ -16,6 +16,7 @@
 <div id='map'></div>
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoibWV0ZW9ncm91cC1tYXBib3giLCJhIjoiY2lzcG5lN2F2MDAwMzJ6cGI3emQ5dmkweCJ9.9bi-UeovXc2D_yks9fc2Yw';
+
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
@@ -29,21 +30,23 @@
       "type": "line",
       "source": {
         type: 'vector',
-//            url: 'http://localhost:9999/contour.pbf'
         tiles: ["http://localhost:9090/out/{z}/{x}/{y}.pbf"]
       },
-      "source-layer": "isolines",
       "layout": {
-        "line-join": "round",
-        "line-cap": "round"
-      },
-      "paint": {
-        "line-color": "#ff69b4 ",
-        "line-width": 1
-      }
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#888",
+            "line-width": 1
+        },
+      "source-layer": "geojsonLayer"
     });
     console.log(l);
   });
+  
+
+  map.addControl(new mapboxgl.NavigationControl());  
 </script>
 
 </body>

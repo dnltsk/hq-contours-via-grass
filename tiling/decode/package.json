@@ -1,5 +1,5 @@
 {
-  "name": "tiling",
+  "name": "decode",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "geojson-vt": "^2.4.0",
-    "mkdirp": "^0.5.1",
-    "vt-pbf": "^2.1.2"
+    "vector-tile": "^1.3.0"
   }
 }
