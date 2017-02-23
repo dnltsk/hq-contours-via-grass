@@ -9,8 +9,8 @@ http://gis.stackexchange.com/questions/87505/grass-v-generalize-method-douglas-n
 
 ## environment
 
-* GRASS 7.3.svn (2017)
-* GDAL 2.2.0dev, released 2016/99/99
+* GRASS GIS 7.2.0
+* GDAL 2.1.2, released 2016/10/24
 
 ## build docker image
 
@@ -19,6 +19,7 @@ http://gis.stackexchange.com/questions/87505/grass-v-generalize-method-douglas-n
 ## run sample script
 
 * `docker run -it --rm -v $(pwd):$(pwd) -w $(pwd) grass ./sample-script.sh`
+* results in new file `sample-data/isolines.geojson` 
 
 ## references
 
