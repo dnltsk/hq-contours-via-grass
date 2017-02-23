@@ -36,7 +36,7 @@ gdal_contour -i 5 -off 0 -a value sample-data/gfs-pressure.grb sample-data/conto
 #2. import contours to GRASS
 v.in.ogr input=sample-data/contours.shp output=contours
 
-#3. double smooth corners with Chaiken's algorithm to get smoother curves
+#3. smooth corners (two times to get even more smoother lines)
 v.generalize --overwrite method=sliding_averaging threshold=1.0 input=contours output=isolines_all
 v.generalize --overwrite method=sliding_averaging threshold=1.0 input=isolines_all output=isolines_all2
 
