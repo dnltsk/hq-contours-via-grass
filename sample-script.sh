@@ -30,23 +30,24 @@ export GRASS_MESSAGE_FORMAT=plain
 g.version
 ogrinfo --version
 
-gdal_contour -i 5 -off 0 -a value sample-data/sample-pressure.grb sample-data/contours.shp
+#1. extract contours as lines every 5 hPa
+gdal_contour -i 5 -off 0 -a value sample-data/gfs-pressure.grb sample-data/contours.shp
 
-#1. import raster
+#2. import contours to GRASS
 v.in.ogr input=sample-data/contours.shp output=contours
 
-#3. smooth corners with Chaiken's algorithm to get smoother curves
+#3. double smooth corners with Chaiken's algorithm to get smoother curves
 v.generalize --overwrite method=sliding_averaging threshold=1.0 input=contours output=isolines_all
-
 v.generalize --overwrite method=sliding_averaging threshold=1.0 input=isolines_all output=isolines_all2
 
+#4. simplify to third digit
 v.generalize --overwrite method=douglas threshold=0.005 input=isolines_all2 output=isolines_all2_sim
 
+#5. export as GeoJSON
 v.out.ogr --overwrite type=line input=isolines_all2_sim output=sample-data/isolines_all2_sim.shp
+ogr2ogr -f "GeoJSON" -lco COORDINATE_PRECISION=2 -dialect sqlite -sql "select * from isolines_all2_sim where ST_LENGTH(GEOMETRY) >= 1" sample-data/isolines.geojson sample-data/isolines_all2_sim.shp
 
-#4. remove too small isolines
-ogr2ogr -f "GeoJSON" -lco COORDINATE_PRECISION=2 -dialect sqlite -sql "select * from isolines_all2_sim where ST_LENGTH(GEOMETRY) >= 1" sample-data/isolines_sim.json sample-data/isolines_all2_sim.shp
-
+#6. clean up
 rm -rf sample-data/*.dbf
 rm -rf sample-data/*.prj
 rm -rf sample-data/*.shp
